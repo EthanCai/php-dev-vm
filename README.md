@@ -42,7 +42,7 @@ Install CentOS 7.2 box
 > cd work/php56
 > vagrant up
 
-> # the password of mysql `root` user is `%CmT>Hk3<ify`
+> # the password of mysql `root` user is `eVkU,iO);5R>`
 ```
 
 ## Use `php-dev-vm-7.1.5.box`
