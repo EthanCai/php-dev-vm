@@ -55,3 +55,10 @@ Install CentOS 7.2 box
   - https://atlas.hashicorp.com/boxes/search
   - http://www.vagrantbox.es/
 - Vagrant: https://www.vagrantup.com/docs/index.html
+- PHP Function Reference／扩展列表：http://php.net/manual/en/funcref.php
+- Nginx配置
+  - https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/
+  - https://segmentfault.com/a/1190000003067656
+- PHP-FPM配置
+  - FastCGI 进程管理器（FPM）配置：http://php.net/manual/zh/install.fpm.configuration.php
+  - https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/
