@@ -39,6 +39,9 @@ Install CentOS 7.2 box
 ## Use `php-dev-vm-5.6.30.box`
 
 ```sh
+> # build php-dev-vm-5.6.30.box or download box from ftp://10.75.87.202/php-dev-vm-5.6.30.box (get the url from Ethan if not available)
+> wget ftp://10.75.87.202/php-dev-vm-5.6.30.box && mv php-dev-vm-5.6.30.box ./box/php-dev-vm-5.6.30.box
+
 > cd work/php56
 > vagrant box remove "../../box/php-dev-vm-5.6.30.box" || true && vagrant up  # ignore error when box not exists
 
