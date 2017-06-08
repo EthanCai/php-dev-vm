@@ -38,9 +38,9 @@ Install CentOS 7.2 box
 
 ## Use `php-dev-vm-5.6.30.box`
 
-```
+```sh
 > cd work/php56
-> vagrant up
+> vagrant box remove "../../box/php-dev-vm-5.6.30.box" || true && vagrant up  # ignore error when box not exists
 
 > # the password of mysql `root` user is `eVkU,iO);5R>`
 ```
