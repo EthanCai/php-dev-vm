@@ -115,22 +115,30 @@ Vagrant.configure("2") do |config|
     sudo echo "======Install nginx======"
     sudo yum install -y nginx && sudo systemctl enable nginx
 
-    # search the initialized password of mysql root user
-    sudo echo "===The initialized password of mysql root user==="
-    sudo grep "password" /var/log/mysqld.log
-
-
     # config nginx
     sudo cp /vagrant/nginx.conf /etc/nginx/
 
     # config php
     sudo sed -i -e 's/;date.timezone =/date.timezone = Asia\/Shanghai/g' /etc/php.ini  # set timezone
 
+    # install phpunit
+    sudo yum install -y phpunit
+
+
+    # ===============================================
+
     # copy php-info.php to default nginx website root
     sudo cp /vagrant/php-info.php /usr/share/nginx/html/
 
     # create work directory
     sudo mkdir -p /letv && sudo chown vagrant:vagrant /letv
+
+
+    # ===============================================
+
+    # search the initialized password of mysql root user and show it in console
+    sudo echo "===The initialized password of mysql root user==="
+    sudo grep "password" /var/log/mysqld.log
 
   SHELL
 end
