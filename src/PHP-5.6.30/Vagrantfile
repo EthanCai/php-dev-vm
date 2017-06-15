@@ -100,7 +100,9 @@ Vagrant.configure("2") do |config|
       php-soap \
       php-ssh2 \
       php-swoole \
-      php-xml
+      php-xml \
+      php-pecl-xdebug \
+      php-pecl-apcu
     sudo systemctl enable php-fpm
 
     # install mysql
