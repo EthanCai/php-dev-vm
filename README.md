@@ -65,24 +65,22 @@ Install CentOS 7.2 box
 //待完成
 
 
-## 如何使用Vagrant Box启动PHP开发环境虚拟机
-
-### 使用 `php-dev-vm-5.6.30.box`
+# 基于`php-dev-vm-5.6.30.box`定制`Symfony`开发环境
 
 ```sh
-> # build php-dev-vm-5.6.30.box or download box from ftp://10.75.87.202/php-dev-vm-5.6.30.box (get the url from Ethan if not available)
-> wget ftp://10.75.87.202/php-dev-vm-5.6.30.box && mv php-dev-vm-5.6.30.box ./box/php-dev-vm-5.6.30.box
+# 首先，构建 php-dev-vm-5.6.30.box
 
-> cd work/php56
+# 把 Symfony Application 的项目文件放在和 `php-dev-vm` 的平级目录 `symfony_prj1` 中
+
+> cd work/php56-symfony
 > vagrant box remove "../../box/php-dev-vm-5.6.30.box" || true && vagrant up  # ignore error when box not exists
 
-> # the password of mysql `root` user is `eVkU,iO);5R>`
+> # 在电脑的 "/etc/hosts" 文件中增加如下配置
+> # 192.168.50.5 host.phpvm.me
+> # 192.168.50.5 symfony.phpvm.me
+
+> # 浏览器中访问 http://symfony.phpvm.me http://host.phpvm.me/php-info.php ，能正常打开页面
 ```
-
-### 使用 `php-dev-vm-7.1.5.box`
-
-//待完成
-
 
 # References
 

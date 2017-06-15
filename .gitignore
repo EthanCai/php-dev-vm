@@ -3,3 +3,4 @@ box/*.box
 
 work/*
 !work/.gitkeep
+!work/php56-symfony/
