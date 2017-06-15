@@ -1,2 +1,5 @@
 .vagrant/
 box/*.box
+
+work/*
+!work/.gitkeep
