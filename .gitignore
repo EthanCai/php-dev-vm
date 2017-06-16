@@ -1,5 +1,6 @@
 .vagrant/
 box/*.box
+*.tmp
 
 work/*
 !work/.gitkeep

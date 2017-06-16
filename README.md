@@ -57,7 +57,7 @@ Install CentOS 7.2 box
 > # todo: add more config statements
 
 > # create vagrant box
-> vagrant package --output "php-dev-vm-5.6.30.box" {vm_id} && mv php-dev-vm-5.6.30.box ../../box/
+> vagrant package --output "php-dev-vm-5.6.30.box" $(vagrant global-status | grep 'src/PHP-5.6.30' | awk '{print $1}') && mv php-dev-vm-5.6.30.box ../../box/
 ```
 
 ### 构建`php-dev-vm-7.1.5.box`
