@@ -57,91 +57,14 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo yum install -y epel-release
-    sudo yum update -y
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+      # restart network.service to make ip settings work, refer to https://github.com/mitchellh/vagrant/issues/8096
+      sudo echo "======Begin restart network.service======"
+      sudo systemctl restart network.service
+      sudo echo "======Finish restart network.service======"
+  SHELL
 
-    sudo echo "======Install tools======"
-    sudo yum install -y git
-    sudo yum install -y wget
-    sudo yum install -y vim
-
-    # install repo
-    sudo echo "======Install repo======"
-
-    cd /vagrant/downloads
-
-    if [ ! -e "remi-release-7.rpm" ]; then
-      wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-    fi
-    sudo rpm -Uvh remi-release-7*.rpm
-    sudo cp /vagrant/remi.repo /etc/yum.repos.d/  # enable remi-php56
-
-    if [ ! -e "mysql57-community-release-el7-9.noarch.rpm" ]; then
-      wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
-    fi
-    sudo yum localinstall -y mysql57-community-release-el7-9.noarch.rpm
-
-    sudo echo "Show repo list:"
-    sudo yum repolist enabled
-
-    # install php 5.6.30
-    sudo echo "======Install php 5.6.30======"
-    sudo yum install -y php php-pear \
-      php-opcache \
-      php-intl \
-      php-gd \
-      php-mysql \
-      php-mcrypt \
-      php-fpm \
-      php-bcmath \
-      php-mbstring \
-      php-redis \
-      php-soap \
-      php-ssh2 \
-      php-swoole \
-      php-xml \
-      php-pecl-xdebug \
-      php-pecl-apcu
-    sudo systemctl enable php-fpm
-
-    # install mysql
-    sudo echo "======Install mysql======"
-    sudo yum install -y mysql-community-server
-    sudo systemctl start mysqld
-    sudo systemctl enable nginx
-
-    # install nginx
-    sudo echo "======Install nginx======"
-    sudo yum install -y nginx
-    sudo systemctl enable nginx
-
-    # install other tools
-    sudo yum intall -y composer
-    sudo yum install -y phpunit
-
-
-    # ===============================================
-
-    # config nginx
-    sudo cp /vagrant/nginx.conf /etc/nginx/
-    sudo nginx -s reload
-
-    # config php
-    sudo sed -i -e 's/;date.timezone =/date.timezone = Asia\/Shanghai/g' /etc/php.ini  # set timezone
-
-
-    # ===============================================
-
-    # copy php-info.php to default nginx website root
-    sudo cp /vagrant/php-info.php /usr/share/nginx/html/
-
-
-    # ===============================================
-
-    # search the initialized password of mysql root user and show it in console
-    sudo echo "===The initialized password of mysql root user==="
-    sudo grep "password" /var/log/mysqld.log
-
+  config.vm.provision "shell", run: "once", inline: <<-SHELL
+      sudo /vagrant/init.sh
   SHELL
 end
