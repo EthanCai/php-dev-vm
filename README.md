@@ -86,9 +86,11 @@ Install CentOS 7.2 box
 
 - 修改`xdebug`的监听端口为`9999`
   ![](assets/README-4a09b.png)
+- 添加`server`配置
+  ![](assets/README-37991.png)
 - 启动调试有两中方法
   - 方法1
-    - 配置`Run/Debug Configurations`
+    - 打开`Run/Debug Configurations`，添加`PHP Web Application`
       ![](assets/README-19551.png)
     - 以`Debug`方式运行`symfony.phpvm.me`
       ![](assets/README-673e3.png)

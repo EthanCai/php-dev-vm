@@ -67,8 +67,21 @@ sudo yum install -y nginx
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
+# install redis
+sudo echo "======Install redis======"
+sudo yum install -y redis
+sudo systemctl start redis
+sudo systemctl enable redis
+
+# install nodejs and required modules
+sudo echo "======Install nodejs and required modules======"
+sudo yum install -y nodejs
+sudo npm install -g less@1.7.5
+
 # install other tools
+sudo echo "======Install other tools======"
 sudo yum install -y composer
+composer config -g repo.packagist composer https://packagist.phpcomposer.com  # set chinese Packagist mirror
 sudo yum install -y phpunit
 
 
