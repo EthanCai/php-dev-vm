@@ -40,6 +40,7 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "../../../symfony_prj1", "/letv/symfony", mount_options: ["dmode=777,fmode=777"]
   config.vm.synced_folder "./nginx.conf.d", "/etc/nginx/conf.d", owner: "root", group: "root"
+  config.vm.synced_folder "./data/mysql", "/var/lib/mysql", owner: "mysql", group: "mysql", mount_options: ["dmode=777,fmode=777"]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -78,7 +79,7 @@ Vagrant.configure("2") do |config|
 
     # update /etc/php.d/15-xdebug.ini
     sudo rm /etc/php.d/*xdebug.ini && sudo cp /vagrant/15-xdebug.ini /etc/php.d/ && sudo chown root:root /etc/php.d/15-xdebug.ini # then modify PHPStorm preferences
-    sudo sysmtemctl restart php-fpm # restart php-fpm to enable xdebug remote mode
+    sudo systemctl restart php-fpm # restart php-fpm to enable xdebug remote mode
 
   SHELL
 
