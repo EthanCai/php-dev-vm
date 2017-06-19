@@ -53,6 +53,7 @@ sudo yum install -y php php-pear \
   php-xml \
   php-pecl-xdebug \
   php-pecl-apcu
+sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
 
 # install mysql

@@ -3,5 +3,6 @@ box/*.box
 *.tmp
 
 work/*
+work/*/data/
 !work/.gitkeep
 !work/php56-symfony/
