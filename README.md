@@ -70,7 +70,8 @@ Install CentOS 7.2 box
 ```sh
 # 首先，构建 php-dev-vm-5.6.30.box
 
-# 把 Symfony Application 的项目文件放在和 `php-dev-vm` 的平级目录 `symfony_prj1` 中
+# 通过 Symfony installer 创建 Symfony 的demo项目，把 demo 的项目文件放在和 `php-dev-vm` 的平级目录 `symfony_demo` 中
+> symfony demo symfony_demo
 
 > cd work/php56-symfony
 > vagrant box remove "../../box/php-dev-vm-5.6.30.box" || true && vagrant up  # ignore error when box not exists
